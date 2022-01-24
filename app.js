@@ -10,6 +10,10 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use('/', generator);
+app.use((req, res, next) => {
+    return res.status(404).send('<h1>404 Page not found</h1>');
+});
+
 
 app.set('port', 5000);
 
